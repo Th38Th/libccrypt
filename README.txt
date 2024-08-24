@@ -1,5 +1,5 @@
 LIBCCRYPT
-====================================================
+============================================
 Implementations of popular cryptographic algorithms.
 
 Plan is to include at least:
