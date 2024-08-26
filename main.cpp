@@ -2,6 +2,7 @@
 #define NOMINMAX
 #include "rsa.h"
 #include "aes.h"
+#include "aes-modes.h"
 #include <iostream>
 #include <iomanip>
 #include <windows.h>
@@ -33,8 +34,9 @@ void test_rsa(){
 
 
 void test_aes(){
-    auto ecb = std::make_shared<AES::ECB>(); 
-    AES::AES aes(256, 128, ecb);
+    //auto ecb = std::make_shared<AES::ECB>(); 
+    auto cbc = std::make_shared<AES::CBC>(16);
+    AES::AES aes(256, 128, cbc);
     #ifdef __AES_X_DBG_FLG__
         aes.debug_print(0);
     #endif

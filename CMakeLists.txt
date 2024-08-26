@@ -16,7 +16,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
 
 # Add the executable
-add_executable(my_program main.cpp rsa.cpp primes.cpp aes.cpp)
+add_executable(my_program main.cpp rsa.cpp primes.cpp aes.cpp aes-modes.cpp)
 
 # Link against GMP and GMPXX
 target_link_libraries(my_program GMP)

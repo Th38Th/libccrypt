@@ -387,7 +387,7 @@ uint8_t pad_char = 0, size_t extra_pad = 0) {
     return res;
 }
 
-std::string pad_string(std::string s, size_t block_size, size_t *quot){
+std::string AES::pad_string(std::string s, size_t block_size, size_t *quot){
     size_t size = s.length();
     std::string res = s;
     size_t rem = size % block_size;
@@ -417,7 +417,7 @@ std::string AES::ECB::encrypted(const BlockEncryption* prn, std::string m) const
     size_t int_block_sz = m.length()/block_size;
     auto res = pad_string(m, block_size, &int_block_sz);
     for (size_t i = 0; i < int_block_sz; i++)
-        encrypt_block(prn, (uint8_t*)res.data()+i*16);
+        encrypt_block(prn, (uint8_t*)res.data()+i*block_size);
     res += res.length() - m.length();
     return res;
 }
@@ -429,7 +429,7 @@ std::string AES::ECB::decrypted(const BlockEncryption* prn, std::string c) const
     c = c.substr(0, c.length() - 1);
     auto res = pad_string(c, block_size, &int_block_sz);
     for (size_t i = 0; i < int_block_sz; i++)
-        decrypt_block(prn, (uint8_t*)res.data()+i*16);
+        decrypt_block(prn, (uint8_t*)res.data()+i*block_size);
     return pad? res.substr(0, res.length() - pad): res;
 }
 

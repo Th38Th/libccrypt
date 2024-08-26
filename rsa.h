@@ -6,6 +6,8 @@
 #include <cstdint>
 using namespace std;
 
+#pragma once
+
 typedef pair<mpz_class,mpz_class> rsa_key;
 typedef pair<rsa_key,rsa_key> rsa_key_pair;
 typedef vector<mpz_class> rsa_ciphertext;

@@ -3,9 +3,12 @@
 #include <cstdint>
 #include <memory>
 
+#pragma once
+
 namespace AES {
     typedef std::vector<uint8_t> aes_key, byte_array;
-    void generate_key(aes_key& dst);
+    void generate_key(aes_key&);
+    std::string pad_string(std::string,size_t,size_t*);
     class SBox
     {
         const uint8_t* s_box = nullptr;
